@@ -1,0 +1,8 @@
+#!/bin/bash
+
+name=$1
+phone=$2
+email=$3
+addr=$4
+
+echo $name $phone $email $addr >> contacts
