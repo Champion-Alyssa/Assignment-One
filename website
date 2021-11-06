@@ -1,0 +1,26 @@
+#!/bin/bash 
+
+while getopts ":uhs" arg; do
+	case ${arg} in
+		u) 
+		wget https://www.alpinelinux.org/ -O web_info.html
+		echo "content saved to html file"
+	 
+	;;	
+		h)
+		echo "argument [-f] is used to store a url in a file"
+	;;
+		s) 
+		cat web_info.html
+	;;
+		\?)
+		echo "${OPTARG} is invalid. Use -h for help!"
+	;;	
+		:)
+		echo " [-f] is a requried argument"
+	;;
+
+	esac
+	exit 0
+shift $(( OPTIND -1 ))
+done

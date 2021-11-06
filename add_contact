@@ -1,8 +1,50 @@
 #!/bin/bash
+if [[ -d contacts ]]; then
+	while getopts ":ardh" opt; do
+		case ${opt} in
+		a) #asking the user for their information
+			read -p "Enter your name " name
+			read -p "Enter your phone number " phone
+			read -p "Enter your email " email
+			read -p "Enter your address " addr
+			echo "$name $phone $email $addr" >> ./contacts/contact_list
+			echo "Contact is added :)"
+	;;
 
-name=$1
-phone=$2
-email=$3
-addr=$4
+		r) # remove a contact
+			read -p "Enter the name you want to delete:" name
+			gawk -i inplace '!/'$name'/' ./contacts/contact_list
+			echo "Successfully deleted."
 
-echo $name $phone $email $addr >> contacts
+	;;
+
+
+		d) # display a contact
+			awk 'BEGIN { FS=" " } { format = "%-10s %-20s %-30s %s\n" 
+                        printf format, "Name", "Phone Number", "Email", "Address" }
+                      { printf format, $1, $2, $3, $4 }' ./contacts/contact_list
+
+	;;
+		h) #help
+			echo"Available options are : -a, -r, -d, -h"
+	;;
+
+		\? ) # error handling
+			echo"error: Invalid Option: $OPTARG use: [h]"
+			exit 1
+	;;
+
+esac
+exit 0 
+done  
+
+
+	if [[ $OPTIND -eq 1 ]]; then
+		echo "Argument required or use [-h] for help" 
+		exit 0; fi 
+	else
+		echo"The directory does not exist, creating it now!"
+		mkdir contacts && touch ./contacts/contact_list
+		exit 0 
+
+fi
