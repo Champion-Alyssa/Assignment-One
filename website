@@ -22,5 +22,4 @@ while getopts ":uhs" arg; do
 
 	esac
 	exit 0
-shift $(( OPTIND -1 ))
 done
