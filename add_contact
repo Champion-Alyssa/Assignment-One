@@ -26,11 +26,11 @@ if [[ -d contacts ]]; then
 
 	;;
 		h) #help
-			echo"Available options are : -a, -r, -d, -h"
+			echo "Available options are : -a, -r, -d, -h"
 	;;
 
 		\? ) # error handling
-			echo"error: Invalid Option: $OPTARG use: [h]"
+			echo "error: Invalid Option: $OPTARG use: [h]"
 			exit 1
 	;;
 
@@ -41,10 +41,6 @@ done
 
 	if [[ $OPTIND -eq 1 ]]; then
 		echo "Argument required or use [-h] for help" 
-		exit 0; fi 
-	else
-		echo"The directory does not exist, creating it now!"
-		mkdir contacts && touch ./contacts/contact_list
-		exit 0 
+		exit 0; fi  
 
 fi

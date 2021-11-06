@@ -12,13 +12,13 @@ while getopts ":n:h" arg; do
 		;;
 	
 	h) 
-		echo"type -n to display the file lines with numbers"
+		echo "type -n to display the file lines with numbers"
 		;;
 	\?) 
-		echo"Oops.. Invalid Argument: $OPTARG; use -h for help"
+		echo "Oops.. Invalid Argument: $OPTARG; use -h for help"
 		exit 1
 		;;
-	:) 	echo" -n needs an argument "
+	:) 	echo " -n needs an argument "
 		exit 1
 		;;
 

@@ -8,7 +8,7 @@ while getopts ":uhs" arg; do
 	 
 	;;	
 		h)
-		echo "argument [-f] is used to store a url in a file"
+		echo "argument [-u] is used to store a url in a file"
 	;;
 		s) 
 		cat web_info.html
@@ -17,7 +17,7 @@ while getopts ":uhs" arg; do
 		echo "${OPTARG} is invalid. Use -h for help!"
 	;;	
 		:)
-		echo " [-f] is a requried argument"
+		echo " [-u] is a requried argument"
 	;;
 
 	esac
